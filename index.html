@@ -1,588 +1,1747 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXORA - Technology & Learning</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <title>CodeMaster Academy</title>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: "#6D5DFB",
+                        dark: "#101127"
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "Arial", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #9B8CFF, #55D6FF);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-bg {
+            background:
+                radial-gradient(circle at 80% 20%, #5140a8 0%, transparent 35%),
+                radial-gradient(circle at 10% 80%, #243d78 0%, transparent 35%),
+                #101127;
+        }
+
+        .glass {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(12px);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+        }
+
+        .section-padding {
+            padding-top: 90px;
+            padding-bottom: 90px;
+        }
+    </style>
 </head>
 
-<body class="bg-white text-gray-800">
+<body class="font-sans text-gray-800 bg-white">
 
-    <!-- NAVBAR -->
+<!-- ================= NAVBAR ================= -->
 
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+<nav class="bg-dark text-white sticky top-0 z-50 shadow-lg">
 
-        <div class="max-w-7xl mx-auto px-6 py-4
-                    flex justify-between items-center">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
 
-            <h1 class="text-3xl font-bold text-red-600 hover:animate-ping">
-                CodeMaster
+        <a href="#home" class="text-3xl font-black tracking-wide">
+            NEXORA<span class="text-purple-400">.</span>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-8 text-sm">
+
+            <a href="#home" class="hover:text-purple-400 transition">Home</a>
+            <a href="#about" class="hover:text-purple-400 transition">About</a>
+            <a href="#services" class="hover:text-purple-400 transition">Services</a>
+            <a href="#courses" class="hover:text-purple-400 transition">Courses</a>
+            <a href="#portfolio" class="hover:text-purple-400 transition">Portfolio</a>
+            <a href="#pricing" class="hover:text-purple-400 transition">Pricing</a>
+            <a href="#contact" class="hover:text-purple-400 transition">Contact</a>
+
+            <a href="#contact"
+               class="bg-purple-600 px-6 py-3 rounded-full
+                      hover:bg-purple-700 transition">
+                Let's Talk →
+            </a>
+
+        </div>
+
+        <!-- Mobile menu -->
+
+        <details class="lg:hidden relative">
+
+            <summary class="cursor-pointer list-none text-3xl">
+                ☰
+            </summary>
+
+            <div class="absolute right-0 top-12 w-64 bg-dark
+                        border border-gray-700 rounded-xl p-6
+                        flex flex-col gap-5 shadow-2xl">
+
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#courses">Courses</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+
+            </div>
+
+        </details>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HERO SECTION ================= -->
+
+<section id="home" class="hero-bg text-white overflow-hidden">
+
+    <div class="max-w-7xl mx-auto px-6 py-28 grid lg:grid-cols-2
+                gap-16 items-center">
+
+        <div>
+
+            <span class="inline-block glass px-5 py-2 rounded-full
+                         text-sm text-purple-200">
+
+                ✨ Welcome to the future of technology
+
+            </span>
+
+            <h1 class="text-5xl md:text-7xl font-black
+                       leading-tight mt-8">
+
+                Transform Your
+                <span class="gradient-text">Digital Future.</span>
+
             </h1>
 
-            <div class="hidden md:flex gap-8 items-center">
+            <p class="text-gray-300 text-lg leading-8 mt-7 max-w-xl">
 
-                <a href="#home" class="hover:text-blue-600">Home</a>
-                <a href="#about" class="hover:text-blue-600">About</a>
-                <a href="#courses" class="hover:text-blue-600">Courses</a>
-                <a href="#contact" class="hover:text-blue-600">Contact</a>
+                We build innovative digital experiences,
+                develop powerful software and help people
+                learn the skills of tomorrow.
 
-                <a href="#courses"
-                   class="bg-blue-600 text-white px-5 py-2
-                          rounded-lg hover:bg-blue-700 transition">
-                    Get Started
+            </p>
+
+            <div class="flex flex-wrap gap-4 mt-9">
+
+                <a href="#services"
+                   class="bg-purple-600 px-8 py-4 rounded-full
+                          font-semibold hover:bg-purple-700
+                          hover:scale-105 transition">
+
+                    Explore Services →
+
+                </a>
+
+                <a href="#about"
+                   class="border border-gray-500 px-8 py-4
+                          rounded-full hover:bg-white
+                          hover:text-dark transition">
+
+                    Discover More
+
                 </a>
 
             </div>
 
-            <details class="md:hidden relative">
+            <div class="grid grid-cols-3 gap-5 mt-16">
 
-                <summary class="cursor-pointer text-2xl">
-                    ☰
-                </summary>
+                <div>
+                    <h3 class="text-3xl font-bold">150+</h3>
+                    <p class="text-gray-400 text-sm mt-2">Projects</p>
+                </div>
 
-                <div class="absolute right-0 top-10 bg-white
-                            shadow-xl rounded-lg p-5 w-48
-                            flex flex-col gap-4">
+                <div>
+                    <h3 class="text-3xl font-bold">50+</h3>
+                    <p class="text-gray-400 text-sm mt-2">Experts</p>
+                </div>
 
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#courses">Courses</a>
-                    <a href="#contact">Contact</a>
+                <div>
+                    <h3 class="text-3xl font-bold">2K+</h3>
+                    <p class="text-gray-400 text-sm mt-2">Learners</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="relative overflow-hidden rounded-2xl">
+
+            <div class="absolute -inset-5 bg-purple-500/20
+                        rounded-full blur-3xl"></div>
+
+            <img
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1000"
+                alt="Technology team working together"
+                class="relative rounded-3xl shadow-2xl
+                       w-full h-[450px] object-cover
+                       hover:scale-125 transition duration-700">
+
+            <div class="absolute -bottom-7 -left-5 glass
+                        p-6 rounded-2xl">
+
+                <p class="text-sm text-gray-300">Our achievement</p>
+                <h3 class="text-3xl font-bold text-white mt-2">
+                    98% Success
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TRUSTED BRANDS ================= -->
+
+<section class="py-12 bg-gray-50">
+
+    <div class="max-w-7xl mx-auto px-6 text-center">
+
+        <p class="text-gray-500 font-semibold uppercase
+                  tracking-widest text-sm">
+
+            Technology for everyone
+
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-5
+                    gap-8 mt-10 items-center">
+
+            <h3 class="text-2xl font-black text-gray-400">GOOGLE</h3>
+            <h3 class="text-2xl font-black text-gray-400">MICROSOFT</h3>
+            <h3 class="text-2xl font-black text-gray-400">ORACLE</h3>
+            <h3 class="text-2xl font-black text-gray-400">ADOBE</h3>
+            <h3 class="text-2xl font-black text-gray-400">IBM</h3>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about" class="section-padding">
+
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2
+                gap-16 items-center">
+
+        <div class="relative">
+
+            <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1000"
+                alt="Our collaborative team"
+                class="rounded-3xl shadow-xl w-full h-[450px]
+                       object-cover">
+
+            <div class="absolute bottom-6 right-6 bg-purple-600
+                        text-white p-7 rounded-2xl shadow-xl">
+
+                <h3 class="text-4xl font-bold">10+</h3>
+                <p class="mt-1">Years of experience</p>
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <p class="text-purple-600 font-bold uppercase
+                      tracking-widest">
+
+                About Nexora
+
+            </p>
+
+            <h2 class="text-4xl md:text-5xl font-black
+                       leading-tight mt-5">
+
+                We Turn Ideas Into
+                <span class="text-purple-600">Reality.</span>
+
+            </h2>
+
+            <p class="text-gray-500 leading-8 mt-7">
+
+                NEXORA is a fictional digital technology and
+                education company created to demonstrate how
+                modern websites are designed and developed.
+
+                We combine creativity, technology and
+                education to create meaningful digital
+                experiences.
+
+            </p>
+
+            <div class="space-y-5 mt-8">
+
+                <div class="flex gap-4 items-start">
+
+                    <span class="bg-purple-100 text-purple-700
+                                 p-3 rounded-xl">✓</span>
+
+                    <div>
+                        <h3 class="font-bold text-lg">
+                            Creative Solutions
+                        </h3>
+
+                        <p class="text-gray-500 mt-1">
+                            Modern and innovative digital ideas.
+                        </p>
+                    </div>
 
                 </div>
+
+                <div class="flex gap-4 items-start">
+
+                    <span class="bg-purple-100 text-purple-700
+                                 p-3 rounded-xl">✓</span>
+
+                    <div>
+                        <h3 class="font-bold text-lg">
+                            Professional Team
+                        </h3>
+
+                        <p class="text-gray-500 mt-1">
+                            Skilled people working together.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="flex gap-4 items-start">
+
+                    <span class="bg-purple-100 text-purple-700
+                                 p-3 rounded-xl">✓</span>
+
+                    <div>
+                        <h3 class="font-bold text-lg">
+                            Practical Learning
+                        </h3>
+
+                        <p class="text-gray-500 mt-1">
+                            Build skills through real projects.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <a href="#contact"
+               class="inline-block mt-9 bg-dark text-white
+                      px-8 py-4 rounded-full
+                      hover:bg-purple-600 transition">
+
+                Know More About Us →
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SERVICES ================= -->
+
+<section id="services" class="section-padding bg-gray-50">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="text-center max-w-2xl mx-auto">
+
+            <p class="text-purple-600 font-bold uppercase
+                      tracking-widest">
+
+                What We Do
+
+            </p>
+
+            <h2 class="text-4xl md:text-5xl font-black mt-4">
+                Our Professional Services
+            </h2>
+
+            <p class="text-gray-500 mt-5 leading-7">
+                We provide digital solutions to help
+                businesses grow and succeed.
+            </p>
+
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3
+                    gap-8 mt-16">
+
+            <!-- Service 1 -->
+
+            <div class="bg-white p-9 rounded-2xl shadow-sm
+                        card-hover hover:shadow-xl">
+
+                <div class="text-4xl bg-purple-100 w-16 h-16
+                            flex items-center justify-center
+                            rounded-2xl">💻</div>
+
+                <h3 class="text-2xl font-bold mt-7">
+                    Web Development
+                </h3>
+
+                <p class="text-gray-500 mt-4 leading-7">
+                    Modern responsive websites using
+                    the latest technologies.
+                </p>
+
+                <a href="#contact"
+                   class="inline-block mt-7 text-purple-600
+                          font-bold hover:translate-x-2 transition">
+
+                    Learn More →
+
+                </a>
+
+            </div>
+
+            <!-- Service 2 -->
+
+            <div class="bg-white p-9 rounded-2xl shadow-sm
+                        card-hover hover:shadow-xl">
+
+                <div class="text-4xl bg-blue-100 w-16 h-16
+                            flex items-center justify-center
+                            rounded-2xl">📱</div>
+
+                <h3 class="text-2xl font-bold mt-7">
+                    App Development
+                </h3>
+
+                <p class="text-gray-500 mt-4 leading-7">
+                    Powerful and user-friendly mobile
+                    application experiences.
+                </p>
+
+                <a href="#contact"
+                   class="inline-block mt-7 text-purple-600
+                          font-bold">
+
+                    Learn More →
+
+                </a>
+
+            </div>
+
+            <!-- Service 3 -->
+
+            <div class="bg-white p-9 rounded-2xl shadow-sm
+                        card-hover hover:shadow-xl">
+
+                <div class="text-4xl bg-green-100 w-16 h-16
+                            flex items-center justify-center
+                            rounded-2xl">📊</div>
+
+                <h3 class="text-2xl font-bold mt-7">
+                    Data Analytics
+                </h3>
+
+                <p class="text-gray-500 mt-4 leading-7">
+                    Transform business data into useful
+                    information and insights.
+                </p>
+
+                <a href="#contact"
+                   class="inline-block mt-7 text-purple-600
+                          font-bold">
+
+                    Learn More →
+
+                </a>
+
+            </div>
+
+            <!-- Service 4 -->
+
+            <div class="bg-white p-9 rounded-2xl shadow-sm
+                        card-hover hover:shadow-xl">
+
+                <div class="text-4xl bg-yellow-100 w-16 h-16
+                            flex items-center justify-center
+                            rounded-2xl">🎨</div>
+
+                <h3 class="text-2xl font-bold mt-7">
+                    UI/UX Design
+                </h3>
+
+                <p class="text-gray-500 mt-4 leading-7">
+                    Beautiful interfaces with excellent
+                    user experiences.
+                </p>
+
+                <a href="#contact"
+                   class="inline-block mt-7 text-purple-600
+                          font-bold">
+
+                    Learn More →
+
+                </a>
+
+            </div>
+
+            <!-- Service 5 -->
+
+            <div class="bg-white p-9 rounded-2xl shadow-sm
+                        card-hover hover:shadow-xl">
+
+                <div class="text-4xl bg-red-100 w-16 h-16
+                            flex items-center justify-center
+                            rounded-2xl">🔐</div>
+
+                <h3 class="text-2xl font-bold mt-7">
+                    Cyber Security
+                </h3>
+
+                <p class="text-gray-500 mt-4 leading-7">
+                    Protect digital assets and improve
+                    online security practices.
+                </p>
+
+                <a href="#contact"
+                   class="inline-block mt-7 text-purple-600
+                          font-bold">
+
+                    Learn More →
+
+                </a>
+
+            </div>
+
+            <!-- Service 6 -->
+
+            <div class="bg-white p-9 rounded-2xl shadow-sm
+                        card-hover hover:shadow-xl">
+
+                <div class="text-4xl bg-pink-100 w-16 h-16
+                            flex items-center justify-center
+                            rounded-2xl">🚀</div>
+
+                <h3 class="text-2xl font-bold mt-7">
+                    Digital Marketing
+                </h3>
+
+                <p class="text-gray-500 mt-4 leading-7">
+                    Grow your brand with effective
+                    digital marketing strategies.
+                </p>
+
+                <a href="#contact"
+                   class="inline-block mt-7 text-purple-600
+                          font-bold">
+
+                    Learn More →
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= COURSES ================= -->
+
+<section id="courses" class="section-padding">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="flex flex-wrap justify-between
+                    items-end gap-6">
+
+            <div>
+
+                <p class="text-purple-600 font-bold uppercase">
+                    Learn With Us
+                </p>
+
+                <h2 class="text-4xl md:text-5xl font-black mt-4">
+                    Popular Courses
+                </h2>
+
+            </div>
+
+            <a href="#contact"
+               class="text-purple-600 font-bold">
+
+                View All Courses →
+
+            </a>
+
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4
+                    gap-7 mt-14">
+
+            <!-- Course 1 -->
+
+            <div class="border rounded-2xl overflow-hidden
+                        card-hover hover:shadow-xl">
+
+                <img
+                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600"
+                    alt="Web development course"
+                    class="w-full h-48 object-cover">
+
+                <div class="p-6">
+
+                    <span class="text-purple-600 text-sm font-bold">
+                        DEVELOPMENT
+                    </span>
+
+                    <h3 class="text-xl font-bold mt-3">
+                        Full Stack Development
+                    </h3>
+
+                    <p class="text-gray-500 mt-3 text-sm">
+                        HTML, CSS, JavaScript, React and Node.js.
+                    </p>
+
+                    <div class="flex justify-between mt-6
+                                border-t pt-5">
+
+                        <span class="font-bold">12 Weeks</span>
+                        <span class="text-yellow-500">★ 4.9</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Course 2 -->
+
+            <div class="border rounded-2xl overflow-hidden
+                        card-hover hover:shadow-xl">
+
+                <img
+                    src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=600"
+                    alt="Python course"
+                    class="w-full h-48 object-cover">
+
+                <div class="p-6">
+
+                    <span class="text-purple-600 text-sm font-bold">
+                        PROGRAMMING
+                    </span>
+
+                    <h3 class="text-xl font-bold mt-3">
+                        Python Programming
+                    </h3>
+
+                    <p class="text-gray-500 mt-3 text-sm">
+                        Learn Python from basics to projects.
+                    </p>
+
+                    <div class="flex justify-between mt-6
+                                border-t pt-5">
+
+                        <span class="font-bold">8 Weeks</span>
+                        <span class="text-yellow-500">★ 4.8</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Course 3 -->
+
+            <div class="border rounded-2xl overflow-hidden
+                        card-hover hover:shadow-xl">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600"
+                    alt="Data analytics course"
+                    class="w-full h-48 object-cover">
+
+                <div class="p-6">
+
+                    <span class="text-purple-600 text-sm font-bold">
+                        ANALYTICS
+                    </span>
+
+                    <h3 class="text-xl font-bold mt-3">
+                        Data Analytics
+                    </h3>
+
+                    <p class="text-gray-500 mt-3 text-sm">
+                        Excel, SQL, Power BI and Python.
+                    </p>
+
+                    <div class="flex justify-between mt-6
+                                border-t pt-5">
+
+                        <span class="font-bold">10 Weeks</span>
+                        <span class="text-yellow-500">★ 4.9</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Course 4 -->
+
+            <div class="border rounded-2xl overflow-hidden
+                        card-hover hover:shadow-xl">
+
+                <img
+                    src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600"
+                    alt="Cyber security course"
+                    class="w-full h-48 object-cover">
+
+                <div class="p-6">
+
+                    <span class="text-purple-600 text-sm font-bold">
+                        SECURITY
+                    </span>
+
+                    <h3 class="text-xl font-bold mt-3">
+                        Cyber Security
+                    </h3>
+
+                    <p class="text-gray-500 mt-3 text-sm">
+                        Understand networks and security basics.
+                    </p>
+
+                    <div class="flex justify-between mt-6
+                                border-t pt-5">
+
+                        <span class="font-bold">8 Weeks</span>
+                        <span class="text-yellow-500">★ 4.7</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WHY CHOOSE US ================= -->
+
+<section class="hero-bg text-white section-padding">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="text-center max-w-2xl mx-auto">
+
+            <p class="text-purple-300 font-bold uppercase">
+                Our Advantages
+            </p>
+
+            <h2 class="text-4xl md:text-5xl font-black mt-4">
+                Why Choose NEXORA?
+            </h2>
+
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4
+                    gap-8 mt-16">
+
+            <div class="glass rounded-2xl p-8 text-center
+                        card-hover">
+
+                <div class="text-5xl">🎯</div>
+
+                <h3 class="text-xl font-bold mt-6">
+                    Clear Goals
+                </h3>
+
+                <p class="text-gray-300 mt-3">
+                    Focused solutions for your business.
+                </p>
+
+            </div>
+
+            <div class="glass rounded-2xl p-8 text-center
+                        card-hover">
+
+                <div class="text-5xl">⚡</div>
+
+                <h3 class="text-xl font-bold mt-6">
+                    Fast Delivery
+                </h3>
+
+                <p class="text-gray-300 mt-3">
+                    Efficient development and delivery.
+                </p>
+
+            </div>
+
+            <div class="glass rounded-2xl p-8 text-center
+                        card-hover">
+
+                <div class="text-5xl">🤝</div>
+
+                <h3 class="text-xl font-bold mt-6">
+                    Team Support
+                </h3>
+
+                <p class="text-gray-300 mt-3">
+                    Collaboration throughout the journey.
+                </p>
+
+            </div>
+
+            <div class="glass rounded-2xl p-8 text-center
+                        card-hover">
+
+                <div class="text-5xl">💡</div>
+
+                <h3 class="text-xl font-bold mt-6">
+                    Innovation
+                </h3>
+
+                <p class="text-gray-300 mt-3">
+                    Creative thinking and modern technology.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STATISTICS ================= -->
+
+<section class="py-20 bg-purple-600 text-white">
+
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-2
+                lg:grid-cols-4 gap-10 text-center">
+
+        <div>
+            <h2 class="text-5xl font-black">2,500+</h2>
+            <p class="mt-3 text-purple-100">Happy Learners</p>
+        </div>
+
+        <div>
+            <h2 class="text-5xl font-black">150+</h2>
+            <p class="mt-3 text-purple-100">Projects Completed</p>
+        </div>
+
+        <div>
+            <h2 class="text-5xl font-black">50+</h2>
+            <p class="mt-3 text-purple-100">Expert Trainers</p>
+        </div>
+
+        <div>
+            <h2 class="text-5xl font-black">20+</h2>
+            <p class="mt-3 text-purple-100">Industry Partners</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PORTFOLIO ================= -->
+
+<section id="portfolio" class="section-padding">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="text-center">
+
+            <p class="text-purple-600 font-bold uppercase">
+                Our Work
+            </p>
+
+            <h2 class="text-4xl md:text-5xl font-black mt-4">
+                Featured Projects
+            </h2>
+
+            <p class="text-gray-500 mt-4">
+                A showcase of creative digital experiences.
+            </p>
+
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3
+                    gap-8 mt-14">
+
+            <div class="group relative overflow-hidden
+                        rounded-2xl">
+
+                <img
+                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700"
+                    alt="Business analytics dashboard"
+                    class="w-full h-80 object-cover
+                           group-hover:scale-110 transition duration-700">
+
+                <div class="absolute inset-0 bg-gradient-to-t
+                            from-black/80 to-transparent
+                            flex flex-col justify-end p-7 text-white">
+
+                    <p class="text-purple-300">Web Application</p>
+                    <h3 class="text-2xl font-bold mt-2">
+                        Business Dashboard
+                    </h3>
+
+                </div>
+
+            </div>
+
+            <div class="group relative overflow-hidden
+                        rounded-2xl">
+
+                <img
+                    src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700"
+                    alt="Ecommerce project"
+                    class="w-full h-80 object-cover
+                           group-hover:scale-110 transition duration-700">
+
+                <div class="absolute inset-0 bg-gradient-to-t
+                            from-black/80 to-transparent
+                            flex flex-col justify-end p-7 text-white">
+
+                    <p class="text-purple-300">E-Commerce</p>
+                    <h3 class="text-2xl font-bold mt-2">
+                        Shopping Platform
+                    </h3>
+
+                </div>
+
+            </div>
+
+            <div class="group relative overflow-hidden
+                        rounded-2xl">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=700"
+                    alt="Mobile application design"
+                    class="w-full h-80 object-cover
+                           group-hover:scale-110 transition duration-700">
+
+                <div class="absolute inset-0 bg-gradient-to-t
+                            from-black/80 to-transparent
+                            flex flex-col justify-end p-7 text-white">
+
+                    <p class="text-purple-300">Mobile App</p>
+                    <h3 class="text-2xl font-bold mt-2">
+                        Smart Application
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WORK PROCESS ================= -->
+
+<section class="section-padding bg-gray-50">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="text-center">
+
+            <p class="text-purple-600 font-bold uppercase">
+                Our Workflow
+            </p>
+
+            <h2 class="text-4xl md:text-5xl font-black mt-4">
+                How We Work
+            </h2>
+
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-8 mt-16">
+
+            <div class="bg-white rounded-2xl p-8 shadow-sm">
+
+                <span class="text-5xl font-black text-purple-200">
+                    01
+                </span>
+
+                <h3 class="text-xl font-bold mt-6">
+                    Discover
+                </h3>
+
+                <p class="text-gray-500 mt-3">
+                    Understand the idea and requirements.
+                </p>
+
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-sm">
+
+                <span class="text-5xl font-black text-purple-200">
+                    02
+                </span>
+
+                <h3 class="text-xl font-bold mt-6">
+                    Plan
+                </h3>
+
+                <p class="text-gray-500 mt-3">
+                    Create a strategy and project roadmap.
+                </p>
+
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-sm">
+
+                <span class="text-5xl font-black text-purple-200">
+                    03
+                </span>
+
+                <h3 class="text-xl font-bold mt-6">
+                    Develop
+                </h3>
+
+                <p class="text-gray-500 mt-3">
+                    Build and test the final solution.
+                </p>
+
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-sm">
+
+                <span class="text-5xl font-black text-purple-200">
+                    04
+                </span>
+
+                <h3 class="text-xl font-bold mt-6">
+                    Deliver
+                </h3>
+
+                <p class="text-gray-500 mt-3">
+                    Launch and provide ongoing support.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TESTIMONIALS ================= -->
+
+<section class="section-padding">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="text-center">
+
+            <p class="text-purple-600 font-bold uppercase">
+                Testimonials
+            </p>
+
+            <h2 class="text-4xl md:text-5xl font-black mt-4">
+                What People Say
+            </h2>
+
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mt-14">
+
+            <div class="border rounded-2xl p-8 shadow-sm">
+
+                <p class="text-yellow-500 text-xl">★★★★★</p>
+
+                <p class="text-gray-600 mt-5 leading-7">
+                    "The team helped us create a professional
+                    online experience. Great work and support."
+                </p>
+
+                <div class="flex items-center gap-4 mt-7">
+
+                    <img
+                        src="https://i.pravatar.cc/100?img=12"
+                        alt="Customer profile"
+                        class="w-14 h-14 rounded-full">
+
+                    <div>
+                        <h3 class="font-bold">Aarav Mehta</h3>
+                        <p class="text-sm text-gray-500">Business Owner</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="border rounded-2xl p-8 shadow-sm">
+
+                <p class="text-yellow-500 text-xl">★★★★★</p>
+
+                <p class="text-gray-600 mt-5 leading-7">
+                    "The learning experience was amazing.
+                    Practical projects made a big difference."
+                </p>
+
+                <div class="flex items-center gap-4 mt-7">
+
+                    <img
+                        src="https://i.pravatar.cc/100?img=47"
+                        alt="Customer profile"
+                        class="w-14 h-14 rounded-full">
+
+                    <div>
+                        <h3 class="font-bold">Ananya Sharma</h3>
+                        <p class="text-sm text-gray-500">Student</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="border rounded-2xl p-8 shadow-sm">
+
+                <p class="text-yellow-500 text-xl">★★★★★</p>
+
+                <p class="text-gray-600 mt-5 leading-7">
+                    "A creative team with excellent communication
+                    and professional delivery."
+                </p>
+
+                <div class="flex items-center gap-4 mt-7">
+
+                    <img
+                        src="https://i.pravatar.cc/100?img=33"
+                        alt="Customer profile"
+                        class="w-14 h-14 rounded-full">
+
+                    <div>
+                        <h3 class="font-bold">Rohan Verma</h3>
+                        <p class="text-sm text-gray-500">Founder</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRICING ================= -->
+
+<section id="pricing" class="section-padding bg-gray-50">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="text-center">
+
+            <p class="text-purple-600 font-bold uppercase">
+                Pricing Plans
+            </p>
+
+            <h2 class="text-4xl md:text-5xl font-black mt-4">
+                Choose Your Plan
+            </h2>
+
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mt-16">
+
+            <!-- Basic -->
+
+            <div class="bg-white rounded-2xl p-9 border
+                        card-hover">
+
+                <h3 class="text-2xl font-bold">Starter</h3>
+
+                <p class="text-gray-500 mt-3">
+                    For individuals and beginners.
+                </p>
+
+                <h2 class="text-5xl font-black mt-8">
+                    ₹999
+                    <span class="text-base font-normal text-gray-500">
+                        /month
+                    </span>
+                </h2>
+
+                <div class="space-y-4 mt-8">
+
+                    <p>✓ Basic learning resources</p>
+                    <p>✓ Community support</p>
+                    <p>✓ Beginner projects</p>
+                    <p class="text-gray-400">✕ Personal mentoring</p>
+
+                </div>
+
+                <a href="#contact"
+                   class="block text-center border-2 border-purple-600
+                          text-purple-600 py-3 rounded-full mt-9
+                          hover:bg-purple-600 hover:text-white transition">
+
+                    Choose Plan
+
+                </a>
+
+            </div>
+
+            <!-- Professional -->
+
+            <div class="bg-dark text-white rounded-2xl p-9
+                        shadow-2xl scale-100 md:scale-105
+                        relative">
+
+                <span class="absolute -top-4 left-1/2
+                             -translate-x-1/2 bg-purple-600
+                             px-5 py-2 rounded-full text-sm">
+
+                    MOST POPULAR
+
+                </span>
+
+                <h3 class="text-2xl font-bold">Professional</h3>
+
+                <p class="text-gray-400 mt-3">
+                    For serious learners and creators.
+                </p>
+
+                <h2 class="text-5xl font-black mt-8">
+                    ₹1,999
+                    <span class="text-base font-normal text-gray-400">
+                        /month
+                    </span>
+                </h2>
+
+                <div class="space-y-4 mt-8 text-gray-200">
+
+                    <p>✓ Everything in Starter</p>
+                    <p>✓ Advanced projects</p>
+                    <p>✓ Personal mentoring</p>
+                    <p>✓ Career guidance</p>
+
+                </div>
+
+                <a href="#contact"
+                   class="block text-center bg-purple-600
+                          py-3 rounded-full mt-9
+                          hover:bg-purple-700 transition">
+
+                    Choose Plan
+
+                </a>
+
+            </div>
+
+            <!-- Enterprise -->
+
+            <div class="bg-white rounded-2xl p-9 border
+                        card-hover">
+
+                <h3 class="text-2xl font-bold">Enterprise</h3>
+
+                <p class="text-gray-500 mt-3">
+                    For teams and organizations.
+                </p>
+
+                <h2 class="text-5xl font-black mt-8">
+                    Custom
+                </h2>
+
+                <div class="space-y-4 mt-8">
+
+                    <p>✓ Team training</p>
+                    <p>✓ Custom projects</p>
+                    <p>✓ Dedicated support</p>
+                    <p>✓ Flexible learning plans</p>
+
+                </div>
+
+                <a href="#contact"
+                   class="block text-center border-2 border-purple-600
+                          text-purple-600 py-3 rounded-full mt-9
+                          hover:bg-purple-600 hover:text-white transition">
+
+                    Contact Sales
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FAQ ================= -->
+
+<section class="section-padding">
+
+    <div class="max-w-3xl mx-auto px-6">
+
+        <div class="text-center mb-12">
+
+            <p class="text-purple-600 font-bold uppercase">
+                FAQs
+            </p>
+
+            <h2 class="text-4xl font-black mt-4">
+                Frequently Asked Questions
+            </h2>
+
+        </div>
+
+        <div class="space-y-5">
+
+            <details class="border rounded-xl p-6 group">
+
+                <summary class="font-bold cursor-pointer
+                                flex justify-between">
+
+                    What is NEXORA?
+
+                    <span class="text-purple-600">+</span>
+
+                </summary>
+
+                <p class="text-gray-500 mt-5 leading-7">
+                    NEXORA is a fictional technology and
+                    learning company used for this project.
+                </p>
+
+            </details>
+
+            <details class="border rounded-xl p-6 group">
+
+                <summary class="font-bold cursor-pointer
+                                flex justify-between">
+
+                    Do you provide online courses?
+
+                    <span class="text-purple-600">+</span>
+
+                </summary>
+
+                <p class="text-gray-500 mt-5 leading-7">
+                    Yes, the sample website showcases
+                    online and practical learning programs.
+                </p>
+
+            </details>
+
+            <details class="border rounded-xl p-6 group">
+
+                <summary class="font-bold cursor-pointer
+                                flex justify-between">
+
+                    Are the courses beginner friendly?
+
+                    <span class="text-purple-600">+</span>
+
+                </summary>
+
+                <p class="text-gray-500 mt-5 leading-7">
+                    Yes. The sample course catalog includes
+                    beginner-level learning paths.
+                </p>
+
+            </details>
+
+            <details class="border rounded-xl p-6 group">
+
+                <summary class="font-bold cursor-pointer
+                                flex justify-between">
+
+                    How can I contact your team?
+
+                    <span class="text-purple-600">+</span>
+
+                </summary>
+
+                <p class="text-gray-500 mt-5 leading-7">
+                    Use the contact form at the bottom
+                    of this demonstration website.
+                </p>
 
             </details>
 
         </div>
 
-    </nav>
+    </div>
 
+</section>
 
-    <!-- HERO SECTION -->
 
-    <section id="home"
-        class="bg-gradient-to-r from-blue-700 to-purple-700
-               text-white py-24 px-6">
+<!-- ================= CONTACT ================= -->
 
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2
-                    gap-12 items-center">
+<section id="contact" class="hero-bg text-white section-padding">
 
-            <div>
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2
+                gap-16">
 
-                <p class="uppercase tracking-widest text-blue-200">
-                    Welcome to CodeMaster
-                </p>
+        <div>
 
-                <h2 class="text-4xl md:text-6xl font-bold
-                           leading-tight mt-4">
-
-                    Learn Coding.
-                    Build Your Future.
-
-                </h2>
-
-                <p class="mt-6 text-lg text-blue-100">
-
-                    Learn programming with practical projects
-                    and become ready for the technology industry.
-
-                </p>
-
-                <div class="flex flex-wrap gap-4 mt-8">
-
-                    <a href="#courses"
-                       class="bg-white text-blue-700 px-7 py-3
-                              rounded-lg font-semibold
-                              hover:scale-105 transition">
-
-                        Explore Courses
-
-                    </a>
-
-                    <a href="#about"
-                       class="border border-white px-7 py-3
-                              rounded-lg hover:bg-white
-                              hover:text-blue-700 transition">
-
-                        Learn More
-
-                    </a>
-
-                </div>
-
-            </div>
-
-            <div class="overflow-hidden rounded-2xl">
-
-                <img
-                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900"
-                    alt="Students learning technology"
-                    class="rounded-2xl shadow-2xl w-full
-                           h-80 object-cover hover:scale-125 transition duration-500">
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ABOUT SECTION -->
-
-    <section id="about" class="py-20 px-6">
-
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2
-                    gap-12 items-center">
-
-            <img
-                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=900"
-                alt="Students working together"
-                class="rounded-2xl shadow-xl w-full">
-
-            <div>
-
-                <h2 class="text-3xl font-bold">
-                    About Our Academy
-                </h2>
-
-                <p class="text-gray-600 mt-5 leading-7">
-
-                    CodeMaster Academy helps students learn
-                    modern technologies through practical
-                    training and real-world projects.
-
-                </p>
-
-                <div class="grid grid-cols-2 gap-5 mt-8">
-
-                    <div>
-                        <h3 class="text-3xl font-bold text-blue-600">
-                            500+
-                        </h3>
-                        <p class="text-gray-500">Students</p>
-                    </div>
-
-                    <div>
-                        <h3 class="text-3xl font-bold text-blue-600">
-                            15+
-                        </h3>
-                        <p class="text-gray-500">Courses</p>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- COURSES SECTION -->
-
-    <section id="courses" class="bg-gray-100 py-20 px-6">
-
-        <div class="max-w-7xl mx-auto">
-
-            <div class="text-center mb-12">
-
-                <h2 class="text-4xl font-bold">
-                    Our Popular Courses
-                </h2>
-
-                <p class="text-gray-500 mt-3">
-                    Choose your learning path.
-                </p>
-
-            </div>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3
-                        gap-8">
-
-                <!-- CARD 1 -->
-
-                <div class="bg-white rounded-xl overflow-auto
-                            shadow-lg 
-                            hover:shadow-2xl transition duration-300 hover:shadow-blue-500 hover:animate-spin lg:hidden" >
-
-                    <img
-                        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600"
-                        alt="Web development"
-                        class="w-full h-48 object-cover
-                               hover:scale-150 transition duration-500">
-
-                    <div class="p-6">
-
-                        <span class="text-blue-600 font-semibold">
-                            Development
-                        </span>
-
-                        <h3 class="text-2xl font-bold mt-2">
-                            Full Stack Development
-                        </h3>
-
-                        <p class="text-gray-500 mt-3">
-                            Learn HTML, CSS, JavaScript,
-                            React, Node.js and MongoDB.
-                        </p>
-
-                        <a href="#contact"
-                           class="inline-block mt-5 bg-blue-600
-                                  text-white px-5 py-2 rounded-lg
-                                  hover:bg-blue-700 transition">
-
-                            Enroll Now
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <!-- CARD 2 -->
-
-                <div class="bg-white rounded-xl overflow-hidden
-                            shadow-lg
-                            hover:shadow-2xl transition duration-300 hover:shadow-blue-500 ">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=600"
-                        alt="Python programming"
-                        class="w-full h-48 object-cover hover:scale-125 transition duration-500 ">
-
-                    <div class="p-6">
-
-                        <span class="text-green-600 font-semibold">
-                            Programming
-                        </span>
-
-                        <h3 class="text-2xl font-bold mt-2">
-                            Python Programming
-                        </h3>
-
-                        <p class="text-gray-500 mt-3">
-                            Learn Python fundamentals,
-                            logic building and projects.
-                        </p>
-
-                        <a href="#contact"
-                           class="inline-block mt-5 bg-blue-600
-                                  text-white px-5 py-2 rounded-lg
-                                  hover:bg-blue-700 transition">
-
-                            Enroll Now
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <!-- CARD 3 -->
-
-                <div class="bg-white rounded-xl overflow-hidden
-                            shadow-lg 
-                            hover:shadow-2xl hover:shadow-blue-500 transition duration-300 ">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600"
-                        alt="Data analytics"
-                        class="w-full h-48 object-cover hover:scale-125 transition duration-500 ">
-
-                    <div class="p-6">
-
-                        <span class="text-purple-600 font-semibold">
-                            Analytics
-                        </span>
-
-                        <h3 class="text-2xl font-bold mt-2">
-                            Data Analytics
-                        </h3>
-
-                        <p class="text-gray-500 mt-3">
-                            Learn Excel, SQL, Power BI
-                            and data visualization.
-                        </p>
-
-                        <a href="#contact"
-                           class="inline-block mt-5 bg-blue-600
-                                  text-white px-5 py-2 rounded-lg
-                                  hover:bg-blue-700 transition">
-
-                            Enroll Now
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FEATURES SECTION -->
-
-    <section class="py-20 px-6">
-
-        <div class="max-w-7xl mx-auto">
-
-            <h2 class="text-4xl font-bold text-center mb-12">
-                Why Choose Us?
-            </h2>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3
-                        gap-8">
-
-                <div class="p-8 bg-blue-50 rounded-xl
-                            hover:shadow-xl transition">
-
-                    <h3 class="text-xl font-bold">
-                        Practical Learning
-                    </h3>
-
-                    <p class="mt-3 text-gray-600">
-                        Learn by creating real-world projects.
-                    </p>
-
-                </div>
-
-                <div class="p-8 bg-purple-50 rounded-xl
-                            hover:shadow-xl transition">
-
-                    <h3 class="text-xl font-bold">
-                        Expert Guidance
-                    </h3>
-
-                    <p class="mt-3 text-gray-600">
-                        Get guidance from experienced trainers.
-                    </p>
-
-                </div>
-
-                <div class="p-8 bg-green-50 rounded-xl
-                            hover:shadow-xl transition">
-
-                    <h3 class="text-xl font-bold">
-                        Career Support
-                    </h3>
-
-                    <p class="mt-3 text-gray-600">
-                        Prepare for your professional journey.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- TESTIMONIAL SECTION -->
-
-    <section class="bg-gray-100 py-20 px-6">
-
-        <div class="max-w-7xl mx-auto">
-
-            <h2 class="text-4xl font-bold text-center mb-12">
-                What Students Say
-            </h2>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3
-                        gap-8">
-
-                <div class="bg-white p-7 rounded-xl shadow">
-
-                    <p class="text-gray-600">
-                        "The practical sessions helped me
-                        understand web development."
-                    </p>
-
-                    <h3 class="font-bold mt-5">
-                        Rahul Sharma
-                    </h3>
-
-                    <p class="text-sm text-gray-400">
-                        Web Development Student
-                    </p>
-
-                </div>
-
-                <div class="bg-white p-7 rounded-xl shadow">
-
-                    <p class="text-gray-600">
-                        "The learning experience was simple
-                        and very useful."
-                    </p>
-
-                    <h3 class="font-bold mt-5">
-                        Priya Verma
-                    </h3>
-
-                    <p class="text-sm text-gray-400">
-                        Python Student
-                    </p>
-
-                </div>
-
-                <div class="bg-white p-7 rounded-xl shadow">
-
-                    <p class="text-gray-600">
-                        "I enjoyed building projects
-                        during the course."
-                    </p>
-
-                    <h3 class="font-bold mt-5">
-                        Aman Kumar
-                    </h3>
-
-                    <p class="text-sm text-gray-400">
-                        Data Analytics Student
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CONTACT SECTION -->
-
-    <section id="contact" class="py-20 px-6">
-
-        <div class="max-w-2xl mx-auto">
-
-            <h2 class="text-4xl font-bold text-center">
-                Contact Us
-            </h2>
-
-            <p class="text-center text-gray-500 mt-3 mb-10">
-                Have a question? Send us a message.
+            <p class="text-purple-300 font-bold uppercase">
+                Get In Touch
             </p>
 
-            <form class="space-y-5">
+            <h2 class="text-4xl md:text-6xl font-black mt-5
+                       leading-tight">
+
+                Let's Build Something
+                <span class="gradient-text">Amazing.</span>
+
+            </h2>
+
+            <p class="text-gray-300 mt-7 leading-8">
+                Have a project or learning goal in mind?
+                Send us a message and let's start a conversation.
+            </p>
+
+            <div class="space-y-7 mt-12">
+
+                <div class="flex gap-5 items-center">
+
+                    <span class="text-3xl">📧</span>
+
+                    <div>
+                        <p class="text-gray-400 text-sm">Email</p>
+                        <p class="font-bold">hello@nexora.example</p>
+                    </div>
+
+                </div>
+
+                <div class="flex gap-5 items-center">
+
+                    <span class="text-3xl">📞</span>
+
+                    <div>
+                        <p class="text-gray-400 text-sm">Phone</p>
+                        <p class="font-bold">+91 98765 43210</p>
+                    </div>
+
+                </div>
+
+                <div class="flex gap-5 items-center">
+
+                    <span class="text-3xl">📍</span>
+
+                    <div>
+                        <p class="text-gray-400 text-sm">Location</p>
+                        <p class="font-bold">New Delhi, India</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONTACT FORM -->
+
+        <form class="bg-white text-gray-800 rounded-3xl
+                     p-8 md:p-10 shadow-2xl space-y-6">
+
+            <h3 class="text-3xl font-black">
+                Send a Message
+            </h3>
+
+            <div>
+
+                <label class="block font-semibold mb-2">
+                    Full Name
+                </label>
 
                 <input
                     type="text"
-                    placeholder="Your Name"
+                    placeholder="Enter your name"
                     required
-                    class="w-full border p-3 rounded-lg
-                           focus:outline-none focus:ring-2
-                           focus:ring-blue-400">
-
-                <input
-                    type="email"
-                    placeholder="Your Email"
-                    required
-                    class="w-full border p-3 rounded-lg
-                           focus:outline-none focus:ring-2
-                           focus:ring-blue-400">
-
-                <textarea
-                    rows="5"
-                    placeholder="Your Message"
-                    required
-                    class="w-full border p-3 rounded-lg
-                           focus:outline-none focus:ring-2
-                           focus:ring-blue-400"></textarea>
-
-                <button
-                    type="submit"
-                    class="w-full bg-blue-600 text-white
-                           py-3 rounded-lg font-semibold
-                           hover:bg-blue-700 transition">
-
-                    Send Message
-
-                </button>
-
-            </form>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer class="bg-gray-900 text-white py-12 px-6">
-
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3
-                    gap-10">
-
-            <div>
-
-                <h2 class="text-2xl font-bold text-blue-400">
-                    CodeMaster
-                </h2>
-
-                <p class="text-gray-400 mt-4">
-                    Learn today. Build tomorrow.
-                </p>
+                    class="w-full border border-gray-300 p-4
+                           rounded-xl focus:outline-none
+                           focus:ring-2 focus:ring-purple-500">
 
             </div>
 
             <div>
 
-                <h3 class="font-bold text-lg mb-4">
-                    Quick Links
-                </h3>
+                <label class="block font-semibold mb-2">
+                    Email Address
+                </label>
 
-                <div class="flex flex-col gap-3 text-gray-400">
+                <input
+                    type="email"
+                    placeholder="Enter your email"
+                    required
+                    class="w-full border border-gray-300 p-4
+                           rounded-xl focus:outline-none
+                           focus:ring-2 focus:ring-purple-500">
 
-                    <a href="#home" class="hover:text-white">Home</a>
-                    <a href="#about" class="hover:text-white">About</a>
-                    <a href="#courses" class="hover:text-white">Courses</a>
-                    <a href="#contact" class="hover:text-white">Contact</a>
+            </div>
+
+            <div>
+
+                <label class="block font-semibold mb-2">
+                    Subject
+                </label>
+
+                <select
+                    required
+                    class="w-full border border-gray-300 p-4
+                           rounded-xl focus:outline-none
+                           focus:ring-2 focus:ring-purple-500">
+
+                    <option value="">Select a subject</option>
+                    <option>Web Development</option>
+                    <option>Online Courses</option>
+                    <option>Business Services</option>
+                    <option>Other</option>
+
+                </select>
+
+            </div>
+
+            <div>
+
+                <label class="block font-semibold mb-2">
+                    Your Message
+                </label>
+
+                <textarea
+                    rows="4"
+                    required
+                    placeholder="Write your message..."
+                    class="w-full border border-gray-300 p-4
+                           rounded-xl focus:outline-none
+                           focus:ring-2 focus:ring-purple-500"></textarea>
+
+            </div>
+
+            <button
+                type="submit"
+                class="w-full bg-purple-600 text-white
+                       py-4 rounded-xl font-bold
+                       hover:bg-purple-700 transition
+                       hover:shadow-xl">
+
+                Send Message →
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ================= NEWSLETTER ================= -->
+
+<section class="bg-purple-600 text-white py-16">
+
+    <div class="max-w-5xl mx-auto px-6 text-center">
+
+        <h2 class="text-3xl md:text-4xl font-black">
+            Stay Updated With NEXORA
+        </h2>
+
+        <p class="mt-4 text-purple-100">
+            Get updates about technology and learning.
+        </p>
+
+        <form class="mt-8 flex flex-col sm:flex-row
+                     gap-3 max-w-xl mx-auto">
+
+            <input
+                type="email"
+                required
+                placeholder="Enter your email"
+                class="flex-1 px-5 py-4 rounded-full
+                       text-gray-800 focus:outline-none">
+
+            <button
+                type="submit"
+                class="bg-dark px-8 py-4 rounded-full
+                       font-bold hover:bg-gray-800 transition">
+
+                Subscribe
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="bg-dark text-white pt-16 pb-8">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4
+                    gap-12">
+
+            <!-- Brand -->
+
+            <div>
+
+                <h2 class="text-3xl font-black">
+                    NEXORA<span class="text-purple-400">.</span>
+                </h2>
+
+                <p class="text-gray-400 mt-5 leading-7">
+                    Creating digital experiences,
+                    developing technology and inspiring
+                    the next generation.
+                </p>
+
+                <div class="flex gap-4 mt-7">
+
+                    <a href="#home" aria-label="Facebook"
+                       class="bg-gray-800 p-3 rounded-full
+                              hover:bg-purple-600 transition">f</a>
+
+                    <a href="#home" aria-label="Instagram"
+                       class="bg-gray-800 p-3 rounded-full
+                              hover:bg-purple-600 transition">◎</a>
+
+                    <a href="#home" aria-label="LinkedIn"
+                       class="bg-gray-800 p-3 rounded-full
+                              hover:bg-purple-600 transition">in</a>
 
                 </div>
 
             </div>
 
+            <!-- Company -->
+
             <div>
 
-                <h3 class="font-bold text-lg mb-4">
-                    Contact
+                <h3 class="font-bold text-xl mb-6">
+                    Company
                 </h3>
 
-                <p class="text-gray-400">
-                    Email: hello@codemaster.example
-                </p>
+                <div class="flex flex-col gap-4 text-gray-400">
 
-                <p class="text-gray-400 mt-3">
-                    Phone: +91 98765 43210
-                </p>
+                    <a href="#about" class="hover:text-purple-400">About Us</a>
+                    <a href="#services" class="hover:text-purple-400">Services</a>
+                    <a href="#portfolio" class="hover:text-purple-400">Portfolio</a>
+                    <a href="#contact" class="hover:text-purple-400">Contact</a>
+
+                </div>
+
+            </div>
+
+            <!-- Resources -->
+
+            <div>
+
+                <h3 class="font-bold text-xl mb-6">
+                    Resources
+                </h3>
+
+                <div class="flex flex-col gap-4 text-gray-400">
+
+                    <a href="#courses" class="hover:text-purple-400">Courses</a>
+                    <a href="#pricing" class="hover:text-purple-400">Pricing</a>
+                    <a href="#home" class="hover:text-purple-400">Blog</a>
+                    <a href="#home" class="hover:text-purple-400">Help Center</a>
+
+                </div>
+
+            </div>
+
+            <!-- Contact -->
+
+            <div>
+
+                <h3 class="font-bold text-xl mb-6">
+                    Contact Details
+                </h3>
+
+                <div class="space-y-4 text-gray-400">
+
+                    <p>📧 hello@nexora.example</p>
+                    <p>📞 +91 98765 43210</p>
+                    <p>📍 New Delhi, India</p>
+
+                </div>
 
             </div>
 
         </div>
 
-        <div class="border-t border-gray-700 mt-10 pt-6
-                    text-center text-gray-400">
+        <div class="border-t border-gray-700 mt-16 pt-8
+                    flex flex-col md:flex-row justify-between
+                    gap-5 text-gray-400 text-sm">
 
-            © 2026 CodeMaster Academy.
-            All Rights Reserved.
+            <p>© 2026 NEXORA. Educational demonstration project.</p>
+
+            <div class="flex gap-6">
+                <a href="#home">Privacy Policy</a>
+                <a href="#home">Terms & Conditions</a>
+            </div>
 
         </div>
 
-    </footer>
+    </div>
+
+</footer>
 
 </body>
 </html>
