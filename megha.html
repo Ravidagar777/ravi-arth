@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Megha Clothing — contemporary fashion for every version of you." />
+  <title>Megha Clothing | Wear Your Story</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#26211f; --rose:#c66d75; --cream:#faf7f3; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'DM Sans',sans-serif; color:var(--ink); background:#fff; }
+    .serif { font-family:'Playfair Display',serif; }
+    .announcement { background:#302824; }
+    .hero-bg { background:linear-gradient(90deg,rgba(27,20,19,.60),rgba(27,20,19,.06)),url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2000&q=90') center 38%/cover; }
+    .category-card img,.product-image { transition:transform .6s cubic-bezier(.2,.7,.2,1); }
+    .category-card:hover img,.product-card:hover .product-image { transform:scale(1.055); }
+    .product-card { overflow:hidden; }
+    .product-image-wrap { overflow:hidden; background:#f2eeea; }
+    .pill { border:1px solid #e7ded8; transition:.2s; }
+    .pill.active,.pill:hover { background:#302824;color:white;border-color:#302824; }
+    .icon-btn { width:40px;height:40px;display:grid;place-items:center;border-radius:999px;background:#fff;box-shadow:0 3px 14px #00000012; }
+    .icon-btn:hover { background:#302824;color:white; }
+    .drawer-backdrop { opacity:0;pointer-events:none;transition:opacity .25s; }
+    .drawer-backdrop.show { opacity:1;pointer-events:auto; }
+    .cart-drawer { transform:translateX(105%);transition:transform .3s ease; }
+    .cart-drawer.open { transform:translateX(0); }
+    .toast { transform:translateY(20px);opacity:0;transition:.25s;pointer-events:none; }
+    .toast.show { transform:translateY(0);opacity:1; }
+    .mobile-menu { display:none; }
+    .mobile-menu.open { display:block; }
+    .newsletter { background:linear-gradient(120deg,#f3e6e1,#f8f0eb); }
+    @media(max-width:767px){.hero-bg{background-position:58% center}.hero-copy{max-width:95%}}
+  </style>
+</head>
+<body>
+  <!-- Announcement bar -->
+  <div class="announcement text-white text-center text-xs sm:text-sm tracking-wide py-5 px-3">
+    ✨ FESTIVE EDIT IS HERE — Enjoy 15% OFF your first order with code <b>MEGHA15</b>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-stone-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="h-[76px] flex items-center justify-between gap-4">
+        <button id="menuBtn" class="md:hidden text-2xl" aria-label="Open menu">☰</button>
+        <a href="#" class="flex flex-col leading-none hover:animate-ping">
+          <span class="serif text-2xl sm:text-3xl font-bold tracking-tight">MEGHA<span class="text-rose-500">.</span></span>
+          <span class="text-[9px] tracking-[.34em] mt-1 text-stone-500">CLOTHING STUDIO</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8 text-sm font-semibold">
+          <a class="hover:text-rose-600" href="#new">New Arrivals</a>
+          <a class="hover:text-rose-600" href="#categories">Clothing</a>
+          <a class="hover:text-rose-600" href="#bestsellers">Best Sellers</a>
+          <a class="hover:text-rose-600" href="#story">Our Story</a>
+        </nav>
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button id="searchToggle" class="icon-btn" aria-label="Search"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg></button>
+          <button id="wishlistTop" class="icon-btn relative" aria-label="Wishlist">♡<span id="wishCount" class="absolute -top-1 -right-1 bg-rose-500 text-white text-[10px] rounded-full w-4 h-4 grid place-items-center">0</span></button>
+          <button id="cartOpen" class="icon-btn relative" aria-label="Shopping bag">♧<span id="cartCount" class="absolute -top-1 -right-1 bg-rose-500 text-white text-[10px] rounded-full w-4 h-4 grid place-items-center">0</span></button>
+        </div>
+      </div>
+      <div id="searchBar" class="hidden pb-4">
+        <div class="flex gap-2 max-w-xl mx-auto">
+          <input id="searchInput" type="search" placeholder="Search dresses, kurtas, co-ords..." class="w-full border border-stone-300 rounded-full px-5 py-3 text-sm outline-none focus:border-rose-400">
+          <button id="searchGo" class="bg-stone-900 text-white rounded-full px-6 text-sm">Search</button>
+        </div>
+      </div>
+      <nav id="mobileMenu" class="mobile-menu md:hidden pb-4 text-sm font-semibold">
+        <div class="grid gap-3 border-t pt-4"><a href="#new">New Arrivals</a><a href="#categories">Clothing</a><a href="#bestsellers">Best Sellers</a><a href="#story">Our Story</a></div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero-bg min-h-[570px] sm:min-h-[650px] flex items-center text-white">
+      <div class="max-w-7xl mx-auto w-full px-5 sm:px-8 py-20">
+        <div class="hero-copy max-w-xl">
+          <p class="uppercase tracking-[.28em] text-xs sm:text-sm mb-5">The new season collection</p>
+          <h1 class="serif text-5xl sm:text-7xl leading-[1.08] font-semibold">Wear your<br><i>own story.</i></h1>
+          <p class="mt-6 text-sm sm:text-base text-white/90 max-w-md leading-7">Thoughtful styles, beautiful details and everyday pieces made to celebrate you.</p>
+          <div class="flex flex-wrap gap-3 mt-8">
+            <a href="#new" class="bg-white text-stone-900 px-7 py-3.5 rounded-full text-sm font-bold hover:bg-rose-100 transition">Shop the collection ↗</a>
+            <a href="#categories" class="border border-white/70 px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-white/15 transition">Explore styles</a>
+          </div>
+          <div class="flex items-center gap-5 mt-12 text-xs text-white/85">
+            <span>✦ Made for your moments</span><span>✦ Easy everyday style</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust strip -->
+    <section class="border-b border-stone-100">
+      <div class="max-w-7xl mx-auto px-4 py-5 grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-xs sm:text-sm text-stone-600">
+        <div>♡ &nbsp; Styles you'll love</div><div>↗ &nbsp; Fresh drops every week</div><div>♧ &nbsp; Easy 7-day returns*</div><div>✧ &nbsp; Secure checkout*</div>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section id="categories" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+      <div class="text-center mb-9">
+        <p class="uppercase tracking-[.25em] text-xs text-rose-600 font-bold">Find your favourite</p>
+        <h2 class="serif text-4xl sm:text-5xl mt-3">Shop by category</h2>
+        <p class="text-stone-500 text-sm mt-3">A little something for every mood and moment.</p>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+        <a href="#products" data-category-link="Dresses" class="category-card group relative h-64 sm:h-[370px] overflow-hidden rounded-2xl">
+          <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=800&q=85" alt="Women's dress">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent"></div><div class="absolute bottom-5 left-5 text-white"><h3 class="serif text-2xl sm:text-3xl">Dresses</h3><span class="text-xs mt-1 inline-block">Explore collection →</span></div>
+        </a>
+        <a href="#products" data-category-link="Ethnic" class="category-card group relative h-64 sm:h-[370px] overflow-hidden rounded-2xl">
+          <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85" alt="Ethnic outfit">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent"></div><div class="absolute bottom-5 left-5 text-white"><h3 class="serif text-2xl sm:text-3xl">Ethnic</h3><span class="text-xs mt-1 inline-block">Explore collection →</span></div>
+        </a>
+        <a href="#products" data-category-link="Tops" class="category-card group relative h-64 sm:h-[370px] overflow-hidden rounded-2xl">
+          <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=85" alt="Women's tops">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent"></div><div class="absolute bottom-5 left-5 text-white"><h3 class="serif text-2xl sm:text-3xl">Tops</h3><span class="text-xs mt-1 inline-block">Explore collection →</span></div>
+        </a>
+        <a href="#products" data-category-link="Co-ords" class="category-card group relative h-64 sm:h-[370px] overflow-hidden rounded-2xl">
+          <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=85" alt="Co-ord fashion">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent"></div><div class="absolute bottom-5 left-5 text-white"><h3 class="serif text-2xl sm:text-3xl">Co-ords</h3><span class="text-xs mt-1 inline-block">Explore collection →</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- New arrivals -->
+    <section id="new" class="bg-[#faf7f3] py-16 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+          <div><p class="uppercase tracking-[.25em] text-xs text-rose-600 font-bold">Just landed</p><h2 class="serif text-4xl sm:text-5xl mt-2">New arrivals</h2><p class="text-sm text-stone-500 mt-2">Your next favourite outfit is waiting.</p></div>
+          <a href="#products" class="text-sm font-bold border-b border-stone-800 pb-1 self-start">View all products ↗</a>
+        </div>
+        <div class="flex gap-2 overflow-x-auto pb-2 mb-7" id="filters">
+          <button class="pill active rounded-full px-5 py-2 text-xs font-semibold whitespace-nowrap" data-filter="All">All styles</button>
+          <button class="pill rounded-full px-5 py-2 text-xs font-semibold whitespace-nowrap" data-filter="Dresses">Dresses</button>
+          <button class="pill rounded-full px-5 py-2 text-xs font-semibold whitespace-nowrap" data-filter="Ethnic">Ethnic wear</button>
+          <button class="pill rounded-full px-5 py-2 text-xs font-semibold whitespace-nowrap" data-filter="Tops">Tops</button>
+          <button class="pill rounded-full px-5 py-2 text-xs font-semibold whitespace-nowrap" data-filter="Co-ords">Co-ords</button>
+        </div>
+        <div id="products" class="grid grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-8 sm:gap-x-5"></div>
+        <p id="emptyState" class="hidden text-center text-stone-500 py-12">No products found. Try another search.</p>
+      </div>
+    </section>
+
+    <!-- Editorial banner -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+      <div class="grid md:grid-cols-2 bg-[#eee3dc] rounded-3xl overflow-hidden">
+        <div class="min-h-[300px] md:min-h-[440px]"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1100&q=90" alt="Fashion editorial collection"></div>
+        <div class="p-8 sm:p-14 flex flex-col justify-center">
+          <p class="uppercase tracking-[.25em] text-xs text-rose-700 font-bold">A little more you</p>
+          <h2 class="serif text-4xl sm:text-5xl leading-tight mt-4">Confidence looks<br><i>good on you.</i></h2>
+          <p class="text-stone-600 text-sm leading-7 mt-5 max-w-md">From slow mornings to big celebrations, find pieces that feel like you. Style is personal — make every outfit your own.</p>
+          <a href="#products" class="mt-7 bg-stone-900 text-white rounded-full px-7 py-3.5 text-sm font-bold self-start hover:bg-rose-700 transition">Find your look ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best sellers -->
+    <section id="bestsellers" class="max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-20">
+      <div class="text-center mb-9"><p class="uppercase tracking-[.25em] text-xs text-rose-600 font-bold">Loved by you</p><h2 class="serif text-4xl sm:text-5xl mt-2">The best sellers</h2></div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="relative rounded-2xl overflow-hidden h-[340px] sm:h-[430px]"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=85" alt="Everyday looks"><div class="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent"></div><div class="absolute bottom-6 left-6 text-white"><p class="text-xs tracking-widest uppercase">Everyday edit</p><h3 class="serif text-3xl mt-1">Easy does it</h3><a href="#products" class="text-sm underline underline-offset-4 mt-3 inline-block">Shop now</a></div></div>
+        <div class="relative rounded-2xl overflow-hidden h-[340px] sm:h-[430px]"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=900&q=85" alt="Party dresses"><div class="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent"></div><div class="absolute bottom-6 left-6 text-white"><p class="text-xs tracking-widest uppercase">Made to celebrate</p><h3 class="serif text-3xl mt-1">The occasion edit</h3><a href="#products" class="text-sm underline underline-offset-4 mt-3 inline-block">Shop now</a></div></div>
+        <div class="relative rounded-2xl overflow-hidden h-[340px] sm:h-[430px]"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=900&q=85" alt="Casual fashion"><div class="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent"></div><div class="absolute bottom-6 left-6 text-white"><p class="text-xs tracking-widest uppercase">Your daily uniform</p><h3 class="serif text-3xl mt-1">Casual, but cute</h3><a href="#products" class="text-sm underline underline-offset-4 mt-3 inline-block">Shop now</a></div></div>
+      </div>
+    </section>
+
+    <!-- Story -->
+    <section id="story" class="bg-[#302824] text-white py-16 sm:py-20">
+      <div class="max-w-4xl mx-auto px-5 text-center">
+        <p class="uppercase tracking-[.3em] text-xs text-rose-200 font-bold">The Megha feeling</p>
+        <h2 class="serif text-4xl sm:text-5xl mt-4">Fashion should feel like <i>you.</i></h2>
+        <p class="text-white/70 text-sm sm:text-base leading-8 mt-6">Megha Clothing is a concept fashion studio built around expressive style, everyday comfort and the little details that make an outfit special. Discover your mood. Mix your pieces. Make it yours.</p>
+        <div class="grid grid-cols-3 gap-4 mt-10 border-t border-white/15 pt-8">
+          <div><div class="serif text-3xl sm:text-4xl">01</div><p class="text-[10px] sm:text-xs text-white/60 mt-2 uppercase tracking-widest">Find your fit</p></div>
+          <div><div class="serif text-3xl sm:text-4xl">02</div><p class="text-[10px] sm:text-xs text-white/60 mt-2 uppercase tracking-widest">Own your style</p></div>
+          <div><div class="serif text-3xl sm:text-4xl">03</div><p class="text-[10px] sm:text-xs text-white/60 mt-2 uppercase tracking-widest">Feel amazing</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter py-14 sm:py-16">
+      <div class="max-w-2xl mx-auto px-5 text-center">
+        <p class="uppercase tracking-[.25em] text-xs text-rose-700 font-bold">The style letter</p>
+        <h2 class="serif text-3xl sm:text-4xl mt-3">A little love in your inbox.</h2>
+        <p class="text-stone-600 text-sm mt-3">Sign up for new drops, styling notes and a welcome surprise.</p>
+        <form id="newsletterForm" class="flex flex-col sm:flex-row gap-2 mt-7 max-w-lg mx-auto">
+          <input required type="email" placeholder="Your email address" class="flex-1 bg-white rounded-full px-5 py-3.5 text-sm outline-none border border-stone-200 focus:border-rose-400">
+          <button class="bg-stone-900 text-white rounded-full px-7 py-3.5 text-sm font-bold hover:bg-rose-700 transition">Join the list</button>
+        </form>
+        <p id="newsletterMsg" class="text-xs text-rose-700 mt-3"></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#211d1b] text-white">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div><div class="serif text-3xl font-bold">MEGHA<span class="text-rose-400">.</span></div><p class="text-white/55 text-sm leading-7 mt-4 max-w-xs">Wear your own story. Discover styles made for your everyday moments.</p><div class="flex gap-3 mt-5 text-lg"><a href="#" aria-label="Instagram">◎</a><a href="#" aria-label="Pinterest">℘</a><a href="#" aria-label="Facebook">f</a></div></div>
+      <div><h4 class="font-bold text-sm mb-4">Explore</h4><ul class="space-y-3 text-sm text-white/60"><li><a href="#new" class="hover:text-white">New arrivals</a></li><li><a href="#categories" class="hover:text-white">Shop categories</a></li><li><a href="#bestsellers" class="hover:text-white">Best sellers</a></li><li><a href="#story" class="hover:text-white">Our story</a></li></ul></div>
+      <div><h4 class="font-bold text-sm mb-4">Customer care</h4><ul class="space-y-3 text-sm text-white/60"><li><a href="#" class="hover:text-white">Contact us</a></li><li><a href="#" class="hover:text-white">Shipping information</a></li><li><a href="#" class="hover:text-white">Returns & exchanges</a></li><li><a href="#" class="hover:text-white">FAQs</a></li></ul></div>
+      <div><h4 class="font-bold text-sm mb-4">Get in touch</h4><p class="text-sm text-white/60 leading-7">We'd love to hear from you.<br>hello@meghaclothing.example<br>Mon–Sat, 10 AM–6 PM</p></div>
+    </div>
+    <div class="border-t border-white/10 py-5 px-5 text-center text-xs text-white/45">© 2026 Megha Clothing Studio. Demo storefront for learning purposes. • Prices, policies and checkout are sample content.</div>
+  </footer>
+
+  <!-- Cart drawer -->
+  <div id="backdrop" class="drawer-backdrop fixed inset-0 bg-black/40 z-50"></div>
+  <aside id="cartDrawer" class="cart-drawer fixed top-0 right-0 h-full w-full max-w-md bg-white z-[60] shadow-2xl flex flex-col">
+    <div class="flex items-center justify-between px-6 py-5 border-b"><div><p class="serif text-2xl">Your bag</p><p class="text-xs text-stone-500 mt-1" id="cartSubtitle">0 items</p></div><button id="cartClose" class="text-2xl" aria-label="Close cart">×</button></div>
+    <div id="cartItems" class="flex-1 overflow-y-auto p-6 space-y-5"><p class="text-sm text-stone-500 text-center py-12">Your bag is waiting for something lovely.</p></div>
+    <div class="border-t p-6">
+      <div class="flex justify-between text-sm mb-2"><span>Subtotal</span><b id="cartSubtotal">₹0</b></div>
+      <p class="text-xs text-stone-500 mb-4">Shipping and taxes calculated at checkout.</p>
+      <button id="checkoutBtn" class="w-full rounded-full bg-stone-900 text-white py-4 text-sm font-bold hover:bg-rose-700 transition">Continue to checkout</button>
+      <p class="text-[10px] text-center text-stone-400 mt-3">Demo only — no payment will be collected.</p>
+    </div>
+  </aside>
+  <div id="toast" class="toast fixed bottom-5 left-1/2 -translate-x-1/2 z-[80] bg-stone-900 text-white text-sm rounded-full px-6 py-3 shadow-xl">Added to bag</div>
+
+  <script>
+    const products = [
+      {id:1,name:'Blush Bloom Midi Dress',category:'Dresses',price:1899,old:2499,tag:'BESTSELLER',rating:'4.9',image:'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=85'},
+      {id:2,name:'Everyday White Shirt',category:'Tops',price:999,old:1399,tag:'NEW',rating:'4.8',image:'https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=700&q=85'},
+      {id:3,name:'Rose Garden Kurta Set',category:'Ethnic',price:2199,old:2899,tag:'TRENDING',rating:'4.9',image:'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=85'},
+      {id:4,name:'Sunday Co-ord Set',category:'Co-ords',price:1799,old:2299,tag:'NEW',rating:'4.7',image:'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=85'},
+      {id:5,name:'Classic Black Dress',category:'Dresses',price:1599,old:1999,tag:'POPULAR',rating:'4.8',image:'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=700&q=85'},
+      {id:6,name:'Soft Pastel Top',category:'Tops',price:899,old:1199,tag:'JUST IN',rating:'4.6',image:'https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=700&q=85'},
+      {id:7,name:'Festive Edit Anarkali',category:'Ethnic',price:2599,old:3299,tag:'FESTIVE',rating:'4.9',image:'https://images.unsplash.com/photo-1583391733956-6c78276477e8?auto=format&fit=crop&w=700&q=85'},
+      {id:8,name:'Weekend Lounge Co-ord',category:'Co-ords',price:1499,old:1899,tag:'COMFY PICK',rating:'4.7',image:'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=85'}
+    ];
+    let activeFilter='All', searchTerm='', cart=[], wishlist=[];
+    const money = n => '₹' + n.toLocaleString('en-IN');
+    const productGrid=document.getElementById('products');
+    function renderProducts(){
+      const shown=products.filter(p=>(activeFilter==='All'||p.category===activeFilter)&&(`${p.name} ${p.category}`).toLowerCase().includes(searchTerm.toLowerCase()));
+      productGrid.innerHTML=shown.map(p=>`
+        <article class="product-card group">
+          <div class="product-image-wrap relative rounded-xl aspect-[3/4]">
+            <img class="product-image w-full h-full object-cover" src="${p.image}" alt="${p.name}" loading="lazy">
+            <span class="absolute top-3 left-3 bg-white/95 text-[9px] font-bold tracking-wider px-2.5 py-1.5 rounded-full">${p.tag}</span>
+            <button onclick="toggleWish(${p.id})" class="icon-btn absolute top-3 right-3 text-xl" aria-label="Add ${p.name} to wishlist">${wishlist.includes(p.id)?'♥':'♡'}</button>
+            <button onclick="addToCart(${p.id})" class="absolute bottom-3 left-3 right-3 bg-white/95 hover:bg-stone-900 hover:text-white rounded-full py-3 text-xs font-bold transition">＋ Add to bag</button>
+          </div>
+          <div class="pt-3">
+            <div class="flex justify-between gap-2 items-start"><div><p class="text-[10px] uppercase tracking-widest text-stone-400">${p.category}</p><h3 class="text-xs sm:text-sm font-semibold mt-1">${p.name}</h3></div><span class="text-[10px] text-amber-600 whitespace-nowrap">★ ${p.rating}</span></div>
+            <div class="flex gap-2 items-center mt-2"><b class="text-sm">${money(p.price)}</b><span class="text-xs text-stone-400 line-through">${money(p.old)}</span><span class="text-[10px] text-rose-600 font-bold">${Math.round((1-p.price/p.old)*100)}% OFF</span></div>
+          </div>
+        </article>`).join('');
+      document.getElementById('emptyState').classList.toggle('hidden',shown.length!==0);
+    }
+    function updateCounts(){
+      document.getElementById('cartCount').textContent=cart.reduce((s,i)=>s+i.qty,0);
+      document.getElementById('wishCount').textContent=wishlist.length;
+      document.getElementById('cartSubtitle').textContent=cart.reduce((s,i)=>s+i.qty,0)+' items';
+    }
+    function toast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.remove('show'),1900);}
+    function addToCart(id){const found=cart.find(i=>i.id===id);if(found)found.qty++;else cart.push({id,qty:1});updateCounts();renderCart();toast('Added to your bag ♡');}
+    function toggleWish(id){wishlist=wishlist.includes(id)?wishlist.filter(x=>x!==id):[...wishlist,id];updateCounts();renderProducts();toast(wishlist.includes(id)?'Saved to your wishlist':'Removed from wishlist');}
+    function changeQty(id,delta){const item=cart.find(i=>i.id===id);if(!item)return;item.qty+=delta;if(item.qty<=0)cart=cart.filter(i=>i.id!==id);updateCounts();renderCart();}
+    function renderCart(){
+      const holder=document.getElementById('cartItems');
+      if(!cart.length){holder.innerHTML='<p class="text-sm text-stone-500 text-center py-12">Your bag is waiting for something lovely.</p>';}
+      else holder.innerHTML=cart.map(item=>{const p=products.find(x=>x.id===item.id);return `<div class="flex gap-4"><img src="${p.image}" class="w-20 h-24 object-cover rounded-lg"><div class="flex-1"><p class="text-sm font-semibold">${p.name}</p><p class="text-xs text-stone-500 mt-1">${p.category}</p><p class="font-bold text-sm mt-2">${money(p.price)}</p><div class="flex items-center gap-3 mt-2"><button onclick="changeQty(${p.id},-1)" class="border rounded-full w-6 h-6">−</button><span class="text-xs">${item.qty}</span><button onclick="changeQty(${p.id},1)" class="border rounded-full w-6 h-6">+</button><button onclick="changeQty(${p.id},-${item.qty})" class="text-xs text-rose-600 ml-auto">Remove</button></div></div></div>`}).join('');
+      document.getElementById('cartSubtotal').textContent=money(cart.reduce((s,i)=>s+products.find(p=>p.id===i.id).price*i.qty,0));
+    }
+    function openCart(){document.getElementById('backdrop').classList.add('show');document.getElementById('cartDrawer').classList.add('open');}
+    function closeCart(){document.getElementById('backdrop').classList.remove('show');document.getElementById('cartDrawer').classList.remove('open');}
+    document.getElementById('cartOpen').addEventListener('click',openCart);
+    document.getElementById('cartClose').addEventListener('click',closeCart);
+    document.getElementById('backdrop').addEventListener('click',closeCart);
+    document.getElementById('checkoutBtn').addEventListener('click',()=>toast(cart.length?'Demo checkout — connect a payment gateway to go live.':'Your bag is empty!'));
+    document.getElementById('wishlistTop').addEventListener('click',()=>{activeFilter='All';searchTerm='';renderProducts();document.getElementById('products').scrollIntoView({behavior:'smooth'});toast(wishlist.length?`You have ${wishlist.length} saved item(s) — hearts mark them.`:'Your wishlist is empty. Tap a heart to save a style.');});
+    document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('open'));
+    document.querySelectorAll('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open')));
+    document.getElementById('searchToggle').addEventListener('click',()=>{document.getElementById('searchBar').classList.toggle('hidden');document.getElementById('searchInput').focus();});
+    function runSearch(){searchTerm=document.getElementById('searchInput').value.trim();activeFilter='All';document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('active',b.dataset.filter==='All'));renderProducts();document.getElementById('new').scrollIntoView({behavior:'smooth'});}
+    document.getElementById('searchGo').addEventListener('click',runSearch);
+    document.getElementById('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter')runSearch();});
+    document.querySelectorAll('[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{activeFilter=btn.dataset.filter;searchTerm='';document.getElementById('searchInput').value='';document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('active',b===btn));renderProducts();}));
+    document.querySelectorAll('[data-category-link]').forEach(link=>link.addEventListener('click',()=>{activeFilter=link.dataset.categoryLink;document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('active',b.dataset.filter===activeFilter));renderProducts();}));
+    document.getElementById('newsletterForm').addEventListener('submit',e=>{e.preventDefault();document.getElementById('newsletterMsg').textContent='Thank you for joining the Megha list! (Demo signup)';e.target.reset();});
+    renderProducts();renderCart();updateCounts();
+  </script>
+</body>
+</html>
